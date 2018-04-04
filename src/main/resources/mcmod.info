@@ -1,0 +1,21 @@
+[
+  {
+    "modid": "rebuild",
+    "name": "Rebuild Framework",
+    "description": "Rebuild core framework.",
+    "version": "${version}",
+    "credits": "Acaeris",
+    "logoFile": "assets/rebuild/textures/logo.png",
+    "mcversion": "${mc_version}",
+    "url": "http://www.github.com/Acaeris/rebuild",
+    "updateUrl": "",
+    "authorList": [
+      "Acaeris"
+    ],
+    "parent": "",
+    "screenshots": [],
+    "dependencies": [
+      "forge"
+    ]
+  }
+]
