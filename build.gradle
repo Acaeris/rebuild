@@ -1,0 +1,85 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'maven'
+
+group = "rebuild"
+archivesBaseName = "Rebuild"
+
+sourceCompatibility = targetCompatibility = '1.8'
+
+// Define properties file
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+    // Load config. It shall from now on be referenced as simply config or project.config
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
+
+dependencies {
+
+}
+
+version = "${project.config.mod_version}." + (System.getenv("BUILD_NUMBER") ?: "1")
+
+println config.mc_version + "-" + config.forge_version
+
+minecraft {
+    version = config.mc_version + "-" + config.forge_version
+    mappings = config.mappings
+    runDir = "run"
+    replace '${mod_version}', project.config.mod_version
+    makeObfSourceJar = false
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mc_version", project.config.mc_version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version': project.version, 'mc_version': project.config.mc_version
+    }
+    rename '(.+_at.cfg)', 'META-INF/$1'
+}
+
+version = "${project.minecraft.version}-${project.version}"
+def commonManifest = {
+    attributes 'FMLAT': 'rebuild_at.cfg'
+}
+
+jar {
+    classifier = 'universal'
+    manifest commonManifest
+}
+
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'deobf'
+    manifest commonManifest
+}
+
+task srcJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+    manifest commonManifest
+}
+
+artifacts {
+    archives deobfJar
+    archives srcJar
+}
