@@ -1,0 +1,10 @@
+{
+  "homepage": "https://github.com/Acaeris/rebuild",
+  "promos": {
+    "1.12.2-latest": "0.0.2",
+    "1.12.2-recommended": "0.0.2"
+  },
+  "1.12.2": {
+    "0.0.2": "Fixed some issues with the ProxyClient."
+  }
+}

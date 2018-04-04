@@ -22,13 +22,12 @@ public class Rebuild {
   @SuppressWarnings("WeakerAccess")
   public static final String MOD_NAME = "Rebuild Framework";
   @SuppressWarnings("WeakerAccess")
-  public static final String VERSION = "0.0.1";
+  public static final String VERSION = "0.0.2";
   @SuppressWarnings("WeakerAccess")
-  public static final String VERSION_MAX = "0.0.2";
+  public static final String VERSION_MAX = "0.0.3";
   public static final String VERSION_GROUP = "required-after:" + MOD_ID + "@[" + VERSION + "," + VERSION_MAX + ");";
   @SuppressWarnings("WeakerAccess")
   public static final String UPDATE_URL = "https://raw.github.com/acaeris/" + MOD_ID + "/master/update.json";
-  @SuppressWarnings("WeakerAccess")
   public static final String DEPENDENCIES = "";
 
   // Logger
