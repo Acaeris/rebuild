@@ -14,7 +14,7 @@ public class Proxy {
    */
   public void preInit(FMLPreInitializationEvent event) {
     // Initialize Config.
-    Rebuild.CONFIG_CORE.setConfiguration(
+    Rebuild.CONFIG.setConfiguration(
         new Configuration(
             new File(event.getModConfigurationDirectory(), "core.cfg"),
             true

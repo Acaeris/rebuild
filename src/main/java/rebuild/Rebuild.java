@@ -9,6 +9,10 @@ import rebuild.core.config.ConfigHandler;
 import rebuild.core.logging.RebuildLog;
 import rebuild.core.proxy.Proxy;
 
+/**
+ * Rebuild Framework.
+ * Used by the Rebuild mod collection.
+ */
 @Mod(
     modid = Rebuild.MOD_ID,
     name = Rebuild.MOD_NAME,
@@ -25,16 +29,18 @@ public class Rebuild {
   public static final String VERSION = "0.0.2";
   @SuppressWarnings("WeakerAccess")
   public static final String VERSION_MAX = "0.0.3";
-  public static final String VERSION_GROUP = "required-after:" + MOD_ID + "@[" + VERSION + "," + VERSION_MAX + ");";
+  public static final String VERSION_GROUP = "required-after:" + MOD_ID
+      + "@[" + VERSION + "," + VERSION_MAX + ");";
   @SuppressWarnings("WeakerAccess")
-  public static final String UPDATE_URL = "https://raw.github.com/acaeris/" + MOD_ID + "/master/update.json";
+  public static final String UPDATE_URL = "https://raw.github.com/acaeris/"
+      + MOD_ID + "/master/update.json";
   public static final String DEPENDENCIES = "";
 
   // Logger
   public static final RebuildLog LOG = RebuildLog.getLogger(MOD_ID);
 
   // Config
-  public static final ConfigHandler CONFIG_CORE = new ConfigHandler(VERSION);
+  public static final ConfigHandler CONFIG = new ConfigHandler(VERSION);
 
   @Mod.Instance(MOD_ID)
   public static Rebuild instance;
@@ -47,7 +53,7 @@ public class Rebuild {
   public static Proxy proxy;
 
   /**
-   * Set up everything in the library that needs to be active before main initialization
+   * Set up everything in the library that needs to be active before main initialization.
    *
    * @param event Event data
    */
@@ -57,7 +63,7 @@ public class Rebuild {
   }
 
   /**
-   * Initialize the mod
+   * Initialize the mod.
    *
    * @param event Event data
    */
@@ -67,7 +73,7 @@ public class Rebuild {
   }
 
   /**
-   * All tasks required to be handle post initialization
+   * All tasks required to be handle post initialization.
    *
    * @param event Event data
    */

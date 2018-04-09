@@ -13,4 +13,8 @@ public class RebuildLog {
   public static RebuildLog getLogger(String logId) {
     return new RebuildLog(LogManager.getLogger(logId));
   }
+
+  public void fatal(String format, Object... objects) {
+    log.fatal(format, objects);
+  }
 }
